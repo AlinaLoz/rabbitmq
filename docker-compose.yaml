@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=lozita
+      - RABBITMQ_DEFAULT_PASS=651003
+    ports:
+      - "127.0.0.1:27183:15672"
+      - "127.0.0.1:27184:5672"
