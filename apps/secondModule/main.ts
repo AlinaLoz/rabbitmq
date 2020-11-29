@@ -8,7 +8,7 @@ async function bootstrap() {
         {
             transport: Transport.RMQ,
             options: {
-                urls: ['amqp://localhost:5672'],
+                urls: ['amqp://lozita:651003@127.0.0.1:27184'],
                 queue: 'test',
                 queueOptions: {
                     durable: false,

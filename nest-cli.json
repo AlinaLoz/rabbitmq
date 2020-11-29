@@ -1,0 +1,29 @@
+{
+  "root": "apps/nest-typescript-starter",
+  "projects": {
+    "mainModule": {
+      "type": "application",
+      "root": "apps/mainModule",
+      "entryFile": "main",
+      "sourceRoot": "apps/mainModule/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/mainModule/tsconfig.app.json"
+      }
+    },
+    "firstModule": {
+      "type": "application",
+      "root": "apps/firstModule",
+      "entryFile": "main",
+      "sourceRoot": "apps/firstModule/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/firstModule/tsconfig.app.json"
+      }
+    }
+  },
+  "monorepo": true,
+  "sourceRoot": "apps/nest-typescript-starter/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/nest-typescript-starter/tsconfig.app.json"
+  }
+}

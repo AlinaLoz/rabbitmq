@@ -6,13 +6,13 @@ async function bootstrap() {
     const app = await NestFactory.createMicroservice<MicroserviceOptions>(
         ThirdModule,
         {
-            options: {
-                urls: ['amqp://localhost:5672'],
-                queue: 'test',
-                queueOptions: {
-                    durable: false,
-                },
-            },
+            // options: {
+            //     urls: ['amqp://lozita:651003@127.0.0.1:27184'],
+            //     queue: 'test',
+            //     queueOptions: {
+            //         durable: false,
+            //     },
+            // },
         },
     );
     app.listen(() => console.log('Third microservice is listening'));
