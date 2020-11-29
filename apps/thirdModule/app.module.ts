@@ -4,23 +4,41 @@ import {ClientsModule, Transport} from '@nestjs/microservices';
 import ThirdController from './controller';
 import { AMQP_CONFIG } from './third.contsants';
 
-console.log('AM');
 @Module({
   imports: [
+      // ClientsModule.register([
+      //     {
+      //         name: AMQP_CONFIG.THIRD_FIRST_1.SERVICE,
+      //         transport: Transport.RMQ,
+      //         options: {
+      //             urls: ['amqp://lozita:651003@127.0.0.1:27184'],
+      //             noAck: false,
+      //             queue: 'DL Queue',
+      //             queueOptions: {
+      //                 durable: false,
+      //                 deadLetterExchange: '',
+      //                 deadLetterRoutingKey: AMQP_CONFIG.THIRD_FIRST_1.QUEUE,
+      //                 messageTtl: 25000,
+      //             },
+      //         },
+      //     },
+      // ]),
       ClientsModule.register([
           {
-            name: AMQP_CONFIG.THIRD_FIRST.SERVICE,
+            name: AMQP_CONFIG.THIRD_FIRST_1.SERVICE,
             transport: Transport.RMQ,
             options: {
-              prefetchCount: 4,
-              noAck: true,
+              noAck: false,
               urls: ['amqp://lozita:651003@127.0.0.1:27184'],
-              queue: AMQP_CONFIG.THIRD_FIRST.QUEUE,
+              queue: AMQP_CONFIG.THIRD_FIRST_1.QUEUE,
               queueOptions: {
-                durable: false
+                durable: false,
+                // deadLetterExchange: 'Dead Letters Exchange',
+                // deadLetterRoutingKey: 'DL Queue',
               },
             },
-          },]
+          },
+          ]
       ),
   ],
   controllers: [

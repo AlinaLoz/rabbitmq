@@ -7,7 +7,7 @@ import { AMQP_CONFIG, AMQP_MESSAGES } from "./third.contsants";
 @Controller('third')
 class ThirdController implements OnModuleInit {
 
-    constructor(@Inject(AMQP_CONFIG.THIRD_FIRST.SERVICE) private readonly clientAmqp: ClientProxy) {}
+    constructor(@Inject(AMQP_CONFIG.THIRD_FIRST_1.SERVICE) private readonly clientAmqp: ClientProxy) {}
 
     onModuleInit(): any {}
 

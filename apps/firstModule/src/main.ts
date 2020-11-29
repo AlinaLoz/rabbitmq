@@ -9,12 +9,14 @@ async function bootstrap() {
       {
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://lozita:651003@127.0.0.1:27184'],
-          queue: AMQP_CONFIG.THIRD_FIRST.QUEUE,
-            noAck: true,
-          queueOptions: {
-            durable: false,
-          },
+            urls: ['amqp://lozita:651003@127.0.0.1:27184'],
+            queue: AMQP_CONFIG.THIRD_FIRST_1.QUEUE,
+            noAck: false,
+            queueOptions: {
+                durable: false,
+                // deadLetterExchange: 'Dead Letters Exchange',
+                // deadLetterRoutingKey: 'DL Queue',
+            },
         },
       },
   );

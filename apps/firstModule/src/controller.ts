@@ -1,5 +1,5 @@
 import {Controller, OnModuleInit} from "@nestjs/common";
-import {MessagePattern, Payload, Ctx, EventPattern} from "@nestjs/microservices";
+import {MessagePattern, Payload, Ctx, EventPattern, RmqContext} from "@nestjs/microservices";
 import {AMQP_MESSAGES} from "../../thirdModule/third.contsants";
 
 @Controller()
@@ -10,11 +10,16 @@ class FirstController implements OnModuleInit {
     }
 
     @MessagePattern(AMQP_MESSAGES.SEND_MESSAGE_TO_FIRST)
-    handleMessageFromThird(
+    async handleMessageFromThird_1(
         @Payload() payload,
-        @Ctx() ctx,
+        @Ctx() ctx: RmqContext,
     ) {
-        return 'response message:' + payload;
+        console.log('1');
+        const channel = ctx.getChannelRef();
+        const originalMsg = ctx.getMessage();
+        // channel.ack(originalMsg);
+        channel.nack(originalMsg, false, false);
+        return 'response message:' + originalMsg;
     }
 
     @EventPattern(AMQP_MESSAGES.SEND_EVENT_TO_FIRST)
